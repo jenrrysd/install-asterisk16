@@ -1,5 +1,10 @@
 # install-asterisk16.sh
 
+Instalación de Asterisk 16 + freepbx + Letsencrypt y todo esto en un scrypt
+Instalación de Asterisk 16 con Freepbx para un facíl manejo de nuestra central telefónica mas Letsencrypt  para que se muestre como uns citio seguro y para todo esto usaremos Fedora 35 Server para correr este scrypt. Creamos un scrypt con el editor de consola llamado “vi” , quedando de la siguiente manera;  vi instalacion-asterisk16.sh cuado se abra el editor en modo consola agregamos lo siguiente;   
+
+
+Luego de agregar el contenido debemos darle permisos de ejecución con el comando “chmod +x instalacion-asterisk16.sh”   y ahora solo queda correr el scrypt de la siguiente manera;  ./instalacion-asterisk16.sh  y seguimos las instrucciones del script. les dejo el link de mi video para que se puedan guiar.  video tutorial  
 
 
 ## Getting started
