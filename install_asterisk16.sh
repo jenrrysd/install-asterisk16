@@ -72,7 +72,7 @@ ln -sf /usr/share/zoneinfo/America/Lima /etc/localtime
 groupadd asterisk
 useradd -r -d /var/lib/asterisk -g asterisk asterisk
 usermod -aG audio,dialout asterisk
-chown -R asterisk.asterisk /etc/asterisk /var/{lib,log,spool}/asterisk /usr/lib64/asterisk
+chown -R asterisk:asterisk /etc/asterisk /var/{lib,log,spool}/asterisk /usr/lib64/asterisk
 
 ##vim /etc/sysconfig/asterisk
 sed -i 's/#AST_USER="asterisk"/AST_USER="asterisk"/' /etc/sysconfig/asterisk
