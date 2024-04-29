@@ -47,8 +47,8 @@ ldconfig
 
 ##INSTALL ASTERISK
 cd
-wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-16-current.tar.gz
-tar xvfz asterisk-16-current.tar.gz
+wget http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-16.9.0.tar.gz
+tar xvfz asterisk-16.*.*.tar.gz
 cd asterisk-16.*/
 ./configure
 make
