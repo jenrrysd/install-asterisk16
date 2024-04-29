@@ -148,7 +148,7 @@ sed -i 's/\(^listen.acl_users = \).*/\1apache,nginx,asterisk/' /etc/php-fpm.d/ww
 systemctl restart php-fpm httpd
 
 cd /var/www/
-wget wget http://mirror.freepbx.org/modules/packages/freepbx/7.4/freepbx-16.0-latest.tgz
+wget http://mirror.freepbx.org/modules/packages/freepbx/7.4/freepbx-16.0-latest.tgz
 tar xfz freepbx-16.0-latest.tgz
 cd freepbx
 
