@@ -45,9 +45,9 @@ ldconfig
 
 ##INSTALL ASTERISK
 cd
-wget http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-16.9.0.tar.gz
-tar xvfz asterisk-16.*.*.tar.gz
-cd asterisk-16.*/
+wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-18-current.tar.gz
+tar -xf asterisk-18-current.tar.gz
+cd asterisk-18.*/
 ./configure
 make
 ./menuselect/menuselect --enable cdr_mysql --enable res_config_mysql --enable codec_opus --enable app_mysql --enable  chan_ooh323 --enable format_mp3 --enable app_macro --enable CORE-SOUNDS-EN-WAV --enable CORE-SOUNDS-EN-ULAW --enable CORE-SOUNDS-EN-ALAW --enable CORE-SOUNDS-EN-GSM --enable CORE-SOUNDS-EN-G729 --enable CORE-SOUNDS-EN-G722 --enable CORE-SOUNDS-EN-SLN16 --enable MOH-OPSOUND-WAV --enable MOH-OPSOUND-ULAW --enable MOH-OPSOUND-ALAW --enable MOH-OPSOUND-GSM --enable MOH-OPSOUND-G729 --enable EXTRA-SOUNDS-EN-WAV --enable EXTRA-SOUNDS-EN-ULAW --enable EXTRA-SOUNDS-EN-ALAW --enable EXTRA-SOUNDS-EN-GSM --enable EXTRA-SOUNDS-EN-G729 menuselect.makeopts
