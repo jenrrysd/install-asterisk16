@@ -179,6 +179,8 @@ cd /var/www/freepbx
 ./install --webroot=/var/www/html -n --dbuser root --dbpass asterisk
 
 ##INSTALL FREEPBX MODULES
+dnf install npm
+fwconsole ma install mp2
 fwconsole ma disablerepo commercial
 fwconsole ma installall
 ##fwconsole ma delete firewall
