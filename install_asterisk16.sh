@@ -16,13 +16,11 @@ case $opcion in
 #
 setenforce 0
 sed -i 's/SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config
-dnf install wget net-tools mlocate vim -y
 updatedb
 
-dnf config-manager --set-enabled powertools
 dnf group -y install "Development Tools"
 
-dnf -y install git wget vim  net-tools sqlite-devel psmisc ncurses-devel newt-devel libxml2-devel libtiff-devel gtk2-devel libtool libuuid-devel subversion kernel-devel gcc-c++ bzip2 crontabs cronie-anacron libedit libedit-devel sendmail sendmail-cf
+dnf -y install git wget vim curl mlocate net-tools sqlite-devel psmisc ncurses-devel newt-devel libxml2-devel libtiff-devel gtk2-devel libtool libuuid-devel subversion kernel-devel gcc-c++ bzip2 crontabs cronie-anacron libedit libedit-devel sendmail sendmail-cf
 
 dnf -y install cronie sqlite-devel net-tools gnutls-devel unixODBC
 
@@ -40,9 +38,9 @@ cd
 git clone https://github.com/pjsip/pjproject.git
 cd pjproject
 ./configure CFLAGS="-DNDEBUG -DPJ_HAS_IPV6=1" --prefix=/usr --libdir=/usr/lib64 --enable-shared --disable-video --disable-sound --disable-opencore-amr
-#make dep
-#make
-#make install
+make dep
+make
+make install
 ldconfig
 
 ##INSTALL ASTERISK
@@ -92,7 +90,7 @@ systemctl daemon-reload
 
 ########--INSTALL PAQUETES NECESARIOS PARA FREEPBX--###############
 dnf -y groupinstall  "Development Tools"
-dnf -y install wget ncurses-devel sendmail sendmail-cf newt-devel libxml2-devel libtiff-devel gtk2-devel subversion kernel-devel git crontabs cronie cronie-anacron sqlite-devel net-tools gnutls-devel unixODBC
+dnf -y install ncurses-devel sendmail sendmail-cf newt-devel libxml2-devel libtiff-devel gtk2-devel subversion kernel-devel git crontabs cronie cronie-anacron sqlite-devel gnutls-devel unixODBC
 
 ##--INSTALL MARIADB--##
 dnf -y install mariadb mariadb-server
@@ -112,8 +110,14 @@ y
 EOF
 
 ####--INSTALL NODE.JS LTS--#####
-dnf module enable nodejs:12 -y
-dnf install nodejs -y
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+nvm install 12
+nvm use 12
+node --version
 
 ###--INSTALL-APACHE--###
 dnf -y install httpd
@@ -124,12 +128,11 @@ sudo firewall-cmd --reload
 
 ###--INSTALL PHP EXTENSIONS REQUERIDOS--####
 dnf -y install yum-utils
-dnf -y install https://rpms.remirepo.net/fedora/remi-release-35.rpm
-dnf -y install module nodejs
+dnf -y install https://rpms.remirepo.net/fedora/remi-release-39.rpm
 dnf module -y reset php
 dnf module -y install php:remi-7.4
 
-dnf install -y wget php php-pear php-cgi php-common php-curl php-mbstring php-gd php-mysqlnd php-gettext php-bcmath php-zip php-xml php-json php-process php-snmp
+dnf install -y php php-pear php-cgi php-common php-curl php-mbstring php-gd php-mysqlnd php-gettext php-bcmath php-zip php-xml php-json php-process php-snmp
 
 pear install Console_Getopt
 
